@@ -88,7 +88,12 @@ function! <SID>Glimpse( ... )
 
 	" execute the search.
 	"
-	let l:cmd = "glimpse " . g:glimpseFlags . " -F '" . l:cwd . ";" . l:file_pattern . "' '" . l:search_pattern . "'"
+	let l:cmd = "glimpse " . g:glimpseFlags . " -F '" . l:cwd
+	if ( l:file_pattern != '' )
+		let l:cmd = l:cmd . ";" . l:file_pattern
+	endif
+	let l:cmd = l:cmd . "' '" . l:search_pattern . "'"
+
 	let l:result_list = split( system( l:cmd ), "\n" )
 
 	" no results, escape now
