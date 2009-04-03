@@ -2,8 +2,11 @@ PLUGIN = specky
 
 SOURCE =  syntax/rdoc.vim
 SOURCE += syntax/specrun.vim
+SOURCE += syntax/rspec.vim
+SOURCE += ftdetect/rspec.vim
 SOURCE += doc/specky.txt
 SOURCE += plugin/specky.vim
+SOURCE += snippets/rspec.snippets
 
 ${PLUGIN}.vba: ${SOURCE}
 	vim --cmd 'let g:plugin_name="${PLUGIN}"' -s build.vim

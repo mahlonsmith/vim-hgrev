@@ -58,11 +58,11 @@ execute 'menu ' . s:menuloc . '.Make\ a\ &banner :call <SID>MakeBanner()<CR>'
 "
 function! <SID>SpecSwitcher()
 
-	" If we aren't in a ruby file (specs are ruby-mode too) then we probably
-	" don't care too much about this function.
+	" If we aren't in a ruby or rspec file then we probably don't care
+	" too much about this function.
 	"
-	if &ft != 'ruby'
-		call s:err( "Not currently in ruby-mode." )
+	if &ft != 'ruby' && &ft != 'rspec'
+		call s:err( "Not currently in ruby or rspec mode." )
 		return
 	endif
 
@@ -122,7 +122,7 @@ function! <SID>QuoteSwitcher()
 		execute ":normal viWc'" . l:word . "'"
 
 	elseif l:type == "'"
-		if &ft == "ruby"
+		if &ft == 'ruby' || &ft == 'rspec'
 			" Single quote to symbol
 			"
 			execute ':normal viWc:' . l:word
