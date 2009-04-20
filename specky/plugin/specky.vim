@@ -5,26 +5,28 @@
 " $Id$
 "
 
+
 " Hook up the functions to the user supplied key bindings. {{{
 "
 if exists( 'g:speckySpecSwitcherKey' )
-	map &g:speckySpecSwitcherKey <SID>SpecSwitcher()
+	execute 'map ' . g:speckySpecSwitcherKey . ' :call <SID>SpecSwitcher()<CR>'
+"	map &g:speckySpecSwitcherKey <SID>SpecSwitcher()
 endif
 
 if exists( 'g:speckyQuoteSwitcherKey' )
-	map &g:speckyQuoteSwitcherKey <SID>QuoteSwitcher()
+	execute 'map ' . g:speckyQuoteSwitcherKey . ' :call <SID>QuoteSwitcher()<CR>'
 endif
 
 if exists( 'g:speckyBannerKey' )
-	map &g:speckyBannerKey <SID>MakeBanner()
+	execute 'map ' . g:speckyBannerKey . ' :call <SID>MakeBanner()<CR>'
 endif
 
 if exists( 'g:speckyRunSpecKey' )
-	map &g:speckyRunSpecKey <SID>RunSpec()
+	execute 'map ' . g:speckyRunSpecKey . ' :call <SID>RunSpec()<CR>'
 endif
 
 if exists( 'g:speckyRunRdocKey' )
-	map g:speckyRunRdocKey <SID>RunRdoc()
+	execute 'map ' . g:speckyRunRdocKey . ' :call <SID>RunRdoc()<CR>'
 endif
 
 if exists( 'specky_loaded' )
