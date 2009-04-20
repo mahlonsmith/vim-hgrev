@@ -25,7 +25,7 @@ highlight link specPassed MoreMsg
 
 " Pending specs (specdoc output)
 "
-syntax match specPending /.*PENDING: Not Yet Implemented)/ contained
+syntax match specPending /.*PENDING: .*)$/ contained
 highlight link specPending Function
 "
 " (Plain output)

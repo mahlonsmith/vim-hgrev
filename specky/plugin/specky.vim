@@ -5,7 +5,6 @@
 " $Id$
 "
 
-" }}}
 " Hook up the functions to the user supplied key bindings. {{{
 "
 if exists( 'g:speckySpecSwitcherKey' )
@@ -27,7 +26,6 @@ endif
 if exists( 'g:speckyRunRdocKey' )
 	execute 'map ' . g:speckyRunRdocKey . ' :call <SID>RunRdoc()<CR>'
 endif
-
 
 if exists( 'specky_loaded' )
 	finish
@@ -152,11 +150,12 @@ endfunction
 function! <SID>MakeBanner()
 	let l:banner_text = toupper(join( split( getline('.'), '\zs' ), ' ' ))
 	let l:banner_text = substitute( l:banner_text, '^\s\+', '', '' )
-	let l:sep = repeat( '#', 72 )
+	let l:sep = repeat( '#', &textwidth == 0 ? 72 : &textwidth )
 	let l:line = line('.')
 
 	call setline( l:line, l:sep )
  	call append( l:line, [ '### ' . l:banner_text, l:sep ] )
+	execute 'normal 3=='
 	call cursor( l:line + 3, 0 )
 endfunction
 
@@ -187,7 +186,7 @@ function! <SID>RunSpec()
 		execute 'bd! ' . l:buf
 	endif
 
-	execute ( exists('g:speckyVertSplit') ? 'vert new ' : 'new ') . l:buf
+	execute <SID>NewWindowCmd() . l:buf
 	setlocal buftype=nofile bufhidden=delete noswapfile filetype=specrun
 	set foldtext='--'.getline(v:foldstart).v:folddashes
 
@@ -230,8 +229,8 @@ function! <SID>RunRdoc()
 	" If we aren't in a ruby file (specs are ruby-mode too) then we probably
 	" don't care too much about this function.
 	"
-	if ( &ft != 'ruby' && &ft != 'rdoc' )
-		call s:err( "Not currently in ruby-mode." )
+	if ( &ft != 'ruby' && &ft != 'rdoc' && &ft != 'rspec' )
+		call s:err( "Not currently in a rubyish-mode." )
 		return
 	endif
 
@@ -266,7 +265,7 @@ function! <SID>RunRdoc()
 	"
 	let l:word = substitute( l:word, ',', '', 'eg' )
 
-	execute ( exists('g:speckyVertSplit') ? 'vert new ' : 'new ') . l:buf
+	execute <SID>NewWindowCmd() . l:buf
 	setlocal buftype=nofile bufhidden=delete noswapfile filetype=rdoc
 	nnoremap <silent> <buffer> q :close<CR>
 
@@ -317,6 +316,24 @@ function! <SID>FindSpecError( detail )
 	endif
 endfunction
 
+" }}}
+" NewWindowCmd() {{{
+"
+" Return the stringified command for a new window, based on user preferences.
+"
+function! <SID>NewWindowCmd()
+	if ( ! exists('g:speckyWindowType' ) )
+		return 'tabnew '
+	endif
+
+	if ( g:speckyWindowType == 1 )
+		return 'new '
+	elseif ( g:speckyWindowType == 2 )
+		return 'vert new '
+	else
+		return 'tabnew '
+	endif
+endfunction
 
 " }}}
 " s:err( msg ) "{{{

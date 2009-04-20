@@ -4,6 +4,7 @@ SOURCE =  syntax/rdoc.vim
 SOURCE += syntax/specrun.vim
 SOURCE += syntax/rspec.vim
 SOURCE += ftdetect/rspec.vim
+SOURCE += ftplugin/rspec.vim
 SOURCE += doc/specky.txt
 SOURCE += plugin/specky.vim
 SOURCE += snippets/rspec.snippets
