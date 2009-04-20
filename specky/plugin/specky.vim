@@ -8,23 +8,23 @@
 " Hook up the functions to the user supplied key bindings. {{{
 "
 if exists( 'g:speckySpecSwitcherKey' )
-	execute 'map ' . g:speckySpecSwitcherKey . ' :call <SID>SpecSwitcher()<CR>'
+	map &g:speckySpecSwitcherKey <SID>SpecSwitcher()
 endif
 
 if exists( 'g:speckyQuoteSwitcherKey' )
-	execute 'map ' . g:speckyQuoteSwitcherKey . ' :call <SID>QuoteSwitcher()<CR>'
+	map &g:speckyQuoteSwitcherKey <SID>QuoteSwitcher()
 endif
 
 if exists( 'g:speckyBannerKey' )
-	execute 'map ' . g:speckyBannerKey . ' :call <SID>MakeBanner()<CR>'
+	map &g:speckyBannerKey <SID>MakeBanner()
 endif
 
 if exists( 'g:speckyRunSpecKey' )
-	execute 'map ' . g:speckyRunSpecKey . ' :call <SID>RunSpec()<CR>'
+	map &g:speckyRunSpecKey <SID>RunSpec()
 endif
 
 if exists( 'g:speckyRunRdocKey' )
-	execute 'map ' . g:speckyRunRdocKey . ' :call <SID>RunRdoc()<CR>'
+	map g:speckyRunRdocKey <SID>RunRdoc()
 endif
 
 if exists( 'specky_loaded' )
