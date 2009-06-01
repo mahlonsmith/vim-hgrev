@@ -134,6 +134,12 @@ snippet shbp
 	${1:target}.should ${2:be_${3:predicate}} ${4}
 snippet shnbp
 	${1:target}.should_not ${2:be_${3:predicate}} ${4}
+snippet exre
+	expect { ${1} }.to raise_error( ${2:ErrorClass}, /${3:message match}/i )
+	${4}
+snippet exnre
+	expect { ${1} }.to_not raise_error( ${2:ErrorClass} )
+	${3}
 snippet shre
 	lambda { ${1} }.should raise_error( ${2:ErrorClass}, /${3:message match}/i )
 	${4}
