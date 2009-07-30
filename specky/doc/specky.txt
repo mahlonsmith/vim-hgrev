@@ -302,7 +302,7 @@ Specky was written by Mahlon E. Smith.
 Specky is distributed under the BSD license.
     http://www.opensource.org/licenses/bsd-license.php
 >
-    Copyright (c) 2008, Mahlon E. Smith <mahlon@martini.nu>
+    Copyright (c) 2008-2009, Mahlon E. Smith <mahlon@martini.nu>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without

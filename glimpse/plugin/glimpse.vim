@@ -8,7 +8,10 @@
 " Mahlon E. Smith <mahlon@martini.nu>
 " $Id$
 "
-" Here's a tcsh alias that's nice too!
+" Here's a bash function that's nice too!
+" function g() { command glimpse -winO -F `pwd` $1 | sed 's|^`pwd`/||'; }
+"
+" And a tcsh alias, while we're at it!
 " alias g 'glimpse -winO -F `pwd` \!:1 | sed -e "s|^`pwd`/||"'
 "
 
@@ -138,8 +141,14 @@ endfunction
 function! <SID>GlimpseIndex()
 	let l:cmd = 'glimpseindex ' . g:glimpseindexFlags . ' -f .'
 	let l:cwd = getcwd()
-	silent! lgetexpr( system(l:cmd) )
+	let $LC_ALL = 'C'
+	let l:index_output = system(l:cmd)
+	let l:index_exit = v:shell_error
 	call s:err( "Updated indexes for '" . l:cwd . "'" )
+	if l:index_exit != 0
+		call s:err( "Uh oh, " . l:cmd . " exited with " . l:index_exit. "!  Output follows:" )
+		call s:err( l:index_output )
+	endif
 endfunction
 
 
