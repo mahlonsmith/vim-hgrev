@@ -10,11 +10,11 @@ SOURCE += plugin/specky.vim
 SOURCE += snippets/rspec.snippets
 
 ${PLUGIN}.vba: ${SOURCE}
-	vim --cmd 'let g:plugin_name="${PLUGIN}"' -s build.vim
+	- vim --cmd 'let g:plugin_name="${PLUGIN}"' -S build.vim -cq\!
 	gzip ${PLUGIN}.vba
 
 install:
 	rsync -Rv ${SOURCE} ${HOME}/.vim/
 
 clean:
-	rm ${PLUGIN}.vba
+	rm ${PLUGIN}.vba.gz

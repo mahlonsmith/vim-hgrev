@@ -32,7 +32,7 @@ endif
 if exists( 'specky_loaded' )
 	finish
 endif
-let specky_loaded = '$Rev: 92 $'
+let specky_loaded = '$Rev$'
 
 
 "}}}
