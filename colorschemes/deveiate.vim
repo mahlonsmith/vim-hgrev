@@ -61,6 +61,7 @@ highlight Constant guifg=#76a3d7
 highlight Function guifg=#9b859d
 highlight String guifg=#da8d53
 highlight Special guifg=#da8d53
+highlight SpecialKey guifg=#222222
 highlight PreProc gui=bold guifg=#00cbcd
 highlight Identifier guifg=#9bda8b
 highlight Number guifg=#9bda8b
