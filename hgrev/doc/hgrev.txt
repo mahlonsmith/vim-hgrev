@@ -15,7 +15,7 @@ CONTENTS                                                       *HGRevContents*
         2.1) Altering revision info shown...........|g:hgrevFlags|
         2.2) Appending file status info.............|g:hgrevAddStatus|
         2.3) Automatically updating status..........|g:hgrevAutoUpdate|
-        2.4) Automatically updating status..........|g:hgrevAutoUpdate|
+        2.4) Changing non-repo buffer behavior......|g:hgrevNoRepoChar|
     3) Author.......................................|HGRevAuthor|
     4) License......................................|HGRevLicense|
 
