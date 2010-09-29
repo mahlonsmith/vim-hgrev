@@ -6,13 +6,13 @@
 runtime! syntax/ruby.vim
 unlet b:current_syntax
 
-syntax keyword rspecGroupMethods describe it
+syntax keyword rspecGroupMethods describe it its let it_should_behave_like pending
 highlight link rspecGroupMethods Type
 
 syntax keyword rspecBeforeAndAfter after after_suite_parts append_after append_before before before_suite_parts prepend_after prepend_before
 highlight link rspecBeforeAndAfter Statement
 
-syntax keyword rspecMocks mock stub
+syntax keyword rspecMocks mock stub double
 highlight link rspecMocks Constant
 
 syntax keyword rspecMockMethods and_raise and_return and_throw and_yield build_child called_max_times expected_args invoke matches
@@ -28,3 +28,4 @@ syntax keyword rspecMessageExpectation advise any_number_of_times at_least at_mo
 highlight link rspecMessageExpectation Function
 
 let b:current_syntax = "rspec"
+

@@ -1,5 +1,5 @@
 let g:vimball_home="."
 e Makefile
-%!grep ^SOURCE
+v/^SOURCE/d
 %s/^SOURCE\s\++\?=\s\+//
 execute '%MkVimball!' . g:plugin_name
