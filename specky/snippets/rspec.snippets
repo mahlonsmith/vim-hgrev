@@ -56,8 +56,13 @@ snippet con
 	context "${1:context}" do
 		${2}
 	end
+# this is the 'old' mock syntax (rspec 1.x)
+# use 'double' for rspec 2.x
 snippet mock
 	${1:var} = mock( "${2:mock_name}"${3:, :null_object => true} )
+	${4}
+snippet dou
+	${1:var} = double( "${2:double_name}" )${3:.as_null_object}
 	${4}
 snippet st
 	stub!( :${1:expectation} ).with( ${2:args} ).and_return( ${3} )
