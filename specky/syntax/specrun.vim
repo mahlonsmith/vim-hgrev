@@ -27,7 +27,9 @@ syntax match specFailed /.*FAILED - #\d\+)/ contains=specDuration,specBoxLine
 syntax keyword specFailedKeyword Failed
 
 " Failure details
-syntax region specFailedDetails start="^FAILURE - #\d\+)" end="^$" fold contains=specCallout
+syntax region specFailedDetails start="^FAILURE - #\d\+)" end="^$" fold contains=specCallout,specErrorLine
+syntax match specErrorLine /^  >>/
+
 
 " Boxes
 syntax match specBox /^\(\s\+\)\?\(+[+-]\+\||.*|\)$/ contains=specFailedKeyword,specDurationKeyword,specPendingKeyword,specPassedKeyword,specBoxContent
@@ -51,6 +53,7 @@ highlight def link specDuration Normal
 highlight def link specBox LineNr
 highlight def link specBoxContent Constant
 highlight def link specBoxLine LineNr
+highlight def link specErrorLine ErrorMsg
 
 let b:current_syntax = "specrun"
 
