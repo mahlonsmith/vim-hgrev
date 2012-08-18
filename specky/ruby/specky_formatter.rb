@@ -190,10 +190,17 @@ end # SpeckyFormatter
 
 ### Identical to the regular SpeckyFormatter, but it puts summary
 ### information at the bottom of the screen instead of the top, and just
-### spits out rudamentary failure info.
+### spits out rudamentary failure info.  Mimics the progress
+### formatter for status feedback
 ###
 class SpeckyFormatterConsole < SpeckyFormatter
+
+	def example_passed( ex );  print '.'; end
+	def example_failed( ex );  print 'F'; end
+	def example_pending( ex ); print '*'; end
+
 	def close
+		puts
 		puts "Failures:" unless @failures.empty?
 		@failures.each do |test|
 			metadata = test.metadata
