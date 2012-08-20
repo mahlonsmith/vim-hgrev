@@ -196,7 +196,7 @@ end # SpeckyFormatter
 class SpeckyFormatterConsole < SpeckyFormatter
 
 	def example_passed( ex );  print '.'; end
-	def example_failed( ex );  print 'F'; end
+	def example_failed( ex );  print 'F'; super; end
 	def example_pending( ex ); print '*'; end
 
 	def close
