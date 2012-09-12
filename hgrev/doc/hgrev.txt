@@ -121,7 +121,7 @@ nothing at all for non-repo.
 
 
 ==============================================================================
-3. AUTHOR                                                          *HGRAuthor*
+3. AUTHOR                                                        *HGRevAuthor*
 
 HGRev was written by Mahlon E. Smith.
 
