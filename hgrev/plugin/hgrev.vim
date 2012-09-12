@@ -70,6 +70,13 @@ function! <SID>RefreshMercurialRev()
 	" Find the closest HG root for the buffer. 'hg root' won't do it, since
 	" it works off the cwd, and we need the nearest root from the filename.
 	"
+
+	if matchstr(bufname('%'), "^[^:/]\\+://") != ''
+		" not on this buffer...
+		" (we're unlikely to get lucky finding '.hg' in http:// or similar)
+		return
+	endif
+
 	let l:searchpaths = split( expand('%:p:h'), '/' )
 	let l:dircount = len(l:searchpaths)
 	let l:root = ''
