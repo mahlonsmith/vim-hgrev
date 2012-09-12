@@ -71,9 +71,9 @@ function! <SID>RefreshMercurialRev()
 	" it works off the cwd, and we need the nearest root from the filename.
 	"
 
+	" (we're unlikely to get lucky finding '.hg' in http:// or similar)
+	"
 	if matchstr(bufname('%'), "^[^:/]\\+://") != ''
-		" not on this buffer...
-		" (we're unlikely to get lucky finding '.hg' in http:// or similar)
 		return
 	endif
 
