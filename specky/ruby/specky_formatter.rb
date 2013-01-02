@@ -106,12 +106,9 @@ class SpeckyFormatter < RSpec::Core::Formatters::BaseTextFormatter
 				exception.message.split("\n").each {|l| self.out l}
 
 				# logic taken from the base class
-				example.example_group.ancestors.push(example.example_group).each do |group|
-					if group.metadata[:shared_group_name]
-						self.out "Shared Example Group: \"#{group.metadata[:shared_group_name]}\" called from " +
-							"#{backtrace_line(group.metadata[:example_group][:location])}"
-						break
-					end
+				if shared_group = find_shared_group(example)
+					self.out "Shared Example Group: \"#{shared_group.metadata[:shared_group_name]}\" called from " +
+						"#{backtrace_line(shared_group.metadata[:example_group][:location])}"
 				end
 			end
 
