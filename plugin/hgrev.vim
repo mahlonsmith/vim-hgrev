@@ -100,10 +100,12 @@ function! <SID>RefreshMercurialRev()
 	let l:rev     = system( l:cmd )
 	let l:hg_exit = v:shell_error
 
-	if l:hg_exit == 0
-		let l:rev = substitute( l:rev, '\n', '', 'g' )
-		let g:hg_revs[ l:key ] = l:rev
+	if l:hg_exit != 0
+		return
 	endif
+
+	let l:rev = substitute( l:rev, '\n', '', 'g' )
+	let g:hg_revs[ l:key ] = l:rev
 
 	" Add file repo status.
 	"
